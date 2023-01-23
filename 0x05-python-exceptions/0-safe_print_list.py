@@ -10,7 +10,7 @@ def safe_print_list(my_list=[], x=0):
                 idx += 1
 
         print()
-         except TypeError:
-             pass
-         finally:
-             return idx
+    except TypeError:
+         pass
+     finally:
+         return idx
