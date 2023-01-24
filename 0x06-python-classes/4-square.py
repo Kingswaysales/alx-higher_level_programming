@@ -1,4 +1,4 @@
-#!/use/bin/python3
+#!/usr/bin/python3
 # 4-square.py
 """Define a class Square."""
 
