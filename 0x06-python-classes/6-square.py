@@ -2,7 +2,6 @@
 """No module imported"""
 
 
-
 class Square:
     """Defines a square"""
 
