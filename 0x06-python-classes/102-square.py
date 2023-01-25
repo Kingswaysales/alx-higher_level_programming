@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-# 102-square.py
 """No module imported"""
 
 
