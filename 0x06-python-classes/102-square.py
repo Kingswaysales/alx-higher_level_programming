@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # 102-square.py
-"""Define a class Square."""
+"""No module imported"""
 
 
 class Square:
-    """Represent a square."""
+    """Defines a square"""
 
     def __init__(self, size=0, position=(0, 0)):
         """initializes a square
