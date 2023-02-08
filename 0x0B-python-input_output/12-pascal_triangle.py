@@ -15,6 +15,7 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
+
     l = [[0 for x in range(i + 1)] for i in range(n)]
     l[0] = [1]
 
