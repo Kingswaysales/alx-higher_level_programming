@@ -16,7 +16,7 @@ class Rectangle (Base):
     """ WIDTH GETTER, SETTER """
     @property
     def width(self):
-        return (__width)
+        return (self.__width)
 
     @width.setter
     def width(self, width):
@@ -42,7 +42,7 @@ class Rectangle (Base):
     """ X GETTER, SETTER """
     @property
     def x(self):
-        return (__x)
+        return (self.__x)
 
     @x.setter
     def x(self, x):
@@ -55,7 +55,7 @@ class Rectangle (Base):
     """ Y GETTER, SETTER """
     @property
     def y(self):
-        return (__y)
+        return (self.__y)
 
     @y.setter
     def y(self, y):
@@ -66,10 +66,9 @@ class Rectangle (Base):
         self.__y = y
 
     """ Public methods """
-
     def area(self):
         """ Return the area value of the Rectangle instance """
-        return (__width * __height)
+        return (self._width * self.__height)
 
     def display(self):
         """ Prints in stdout the Rectangle instance with the character # """
