@@ -9,10 +9,16 @@ class Rectangle (Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Class construnctor """
         super().__init__(id)
-        self.width = width
-        self.height = height
-        self.x = x
-        self.y = y
+        
+        self.check_integer_parameter(width, 'width')
+        self.check_integer_parameter(height, 'height')
+        self.check_integer_parameter(x, 'x')
+        self.check_integer_parameter(y, 'y')
+
+        self.__width = width
+        self.__height = height
+        self.__x = x
+        self.__y = y
 
     """ WIDTH GETTER, SETTER """
     @property
@@ -25,6 +31,8 @@ class Rectangle (Base):
             raise TypeError("width must be an integer")
         if width <= 0:
             raise ValueError("width must be > 0")
+        self.check_integer_parameter(width, 'width')
+
         self.__width = width
 
     """ HEIGHT GETTER, SETTER """
@@ -38,6 +46,8 @@ class Rectangle (Base):
             raise TypeError("heigth must be an integer")
         if height <= 0:
             raise ValueError("heigth must be > 0")
+        self.check_integer_parameter(height, 'height')
+
         self.__height = height
 
     """ X GETTER, SETTER """
