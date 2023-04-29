@@ -1,24 +1,39 @@
 #!/usr/bin/python3
-"""Finds a peak in a list of unsorted integers"""
+"""
+    Defines function find_peak
+"""
 
 
 def find_peak(list_of_integers):
-    """Finds a peak in list_of_integers"""
-
-    if list_of_integers is None or list_of_integers == []:
+    """
+        Function finds peak in unsorted list of integers
+        Args:
+            list_of_integers: unsorted list of integers
+    """
+    if not list_of_integers:
         return None
-    lo = 0
-    hi = len(list_of_integers)
-    mid = ((hi - lo) // 2) + lo
-    mid = int(mid)
-    if hi == 1:
+    size = len(list_of_integers)
+    if size == 1:
         return list_of_integers[0]
-    if hi == 2:
-        return max(list_of_integers)
-    if list_of_integers[mid] >= list_of_integers[mid - 1] and\
-            list_of_integers[mid] >= list_of_integers[mid + 1]:
-        return list_of_integers[mid]
-    if mid > 0 and list_of_integers[mid] < list_of_integers[mid + 1]:
-        return find_peak(list_of_integers[mid:])
-    if mid > 0 and list_of_integers[mid] < list_of_integers[mid - 1]:
-        return find_peak(list_of_integers[:mid])
+    return peak_rec(list_of_integers, 0, size)
+
+
+def peak_rec(integers, start, end):
+    """
+        Recursively finds peak in unsorted list of integers
+        Args:
+            integers: unsorted list of integers
+            start: starting index of segment of list
+            end: last index + 1 of segment of list
+    """
+    mid = (end - start) // 2 + start
+    current = integers[mid]
+    check_prev = mid == 0 or integers[mid - 1] < current
+    check_next = mid == len(integers) - 1 or current > integers[mid + 1]
+    if check_prev and check_next:
+        return current
+    if end - start <= 1:
+        return None
+    if check_prev:
+        return peak_rec(integers, mid + 1, end)
+    return peak_rec(integers, start, mid)
