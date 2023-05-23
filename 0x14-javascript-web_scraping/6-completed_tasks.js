@@ -1,16 +1,30 @@
 #!/usr/bin/node
 const request = require('request');
 const url = process.argv[2];
-const fs = require('fs');
 
 request(url, (err, response, body) => {
   if (err) {
     console.log(err);
   } else {
-    fs.writeFile(process.argv[3], body, 'utf-8', (err) => {
-      if (err) {
-        console.log(err);
+    const tasks = JSON.parse(body);
+    const result = {};
+    const report = [];
+
+    for (const task of tasks) {
+      if (task.completed) {
+        const userFound = report.find(element => element.id === task.userId);
+        if (!userFound) {
+          report.push({ id: task.userId, count: 1 });
+        } else {
+          userFound.count += 1;
+        }
       }
-    });
+    }
+
+    for (const item of report) {
+      result[item.id] = item.count;
+    }
+
+    console.log(result);
   }
 });
